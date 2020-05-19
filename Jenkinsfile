@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        table 'rust'
+        dockerfile true
     }
 
     stages {
