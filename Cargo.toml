@@ -13,7 +13,3 @@ hyper = "0.12.10"
 futures = "0.1.18"
 serde = "1.0.110"
 serde_derive = "1.0.110"
-
-[[bin]]
-name = "main"
-path = "/src/main.rs"
