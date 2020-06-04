@@ -7,17 +7,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "cargo build --release"
+                container('dommy-base') {
+                    sh "cargo build --release"
+                }
             }
         }
         stage('Test') {
             steps {
-                sh "cargo test"
+                container('dommy-base') {
+                    sh "cargo test"
+                }
             }
         }
         stage('Deliver') { 
             steps {
-                sh './target/release/tower_web_dummy_service' 
+                container('dommy-base') {
+                    sh './target/release/tower_web_dummy_service' 
+                }
             }
         }
     }
