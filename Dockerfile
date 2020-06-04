@@ -11,4 +11,4 @@ RUN cargo build --release
 
 EXPOSE 3210
 
-ENTRYPOINT [ "./target/release/tower_web_dummy_service" ]
+ENTRYPOINT [ "nohup ./target/release/tower_web_dummy_service &" ]
