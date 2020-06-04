@@ -1,27 +1,23 @@
 pipeline {
     agent {
-        dockerfile true
+        docker {
+            image 'rustlang/rust:nightly'
+        }
     }
     stages {
         stage('Build') {
             steps {
-                container('dommy-base') {
-                    sh "cargo build --release"
-                }
+                sh "cargo build --release"
             }
         }
         stage('Test') {
             steps {
-                container('dommy-base') {
-                    sh "cargo test"
-                }
+                sh "cargo test"
             }
         }
         stage('Deliver') { 
             steps {
-                container('dommy-base') {
-                    sh './target/release/tower_web_dummy_service' 
-                }
+                sh 'nohup ./target/release/tower_web_dummy_service &'  
             }
         }
     }
